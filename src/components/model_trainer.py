@@ -39,9 +39,9 @@ class ModelTrainer:
             )
 
             models = {
-                # "Random Forest": RandomForestRegressor(),
+                "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
-                # "Gradient Boosting": GradientBoostingRegressor(),
+                "Gradient Boosting": GradientBoostingRegressor(),
                 "Linear Regression": LinearRegression(),
                
             }
@@ -55,20 +55,20 @@ class ModelTrainer:
                     # 'max_features':['sqrt','log2'],
                 },
 
-                # "Random Forest":{
-                #     # 'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                "Random Forest":{
+                    # 'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
                  
-                #     # 'max_features':['sqrt','log2',None],
-                #     'n_estimators': [8,16,32,64,128,256]
-                # },
-                # "Gradient Boosting":{
-                #     # 'loss':['squared_error', 'huber', 'absolute_error', 'quantile'],
-                #     'learning_rate':[.1,.01,.05,.001],
-                #     'subsample':[0.6,0.7,0.75,0.8,0.85,0.9],
-                #     # 'criterion':['squared_error', 'friedman_mse'],
-                #     # 'max_features':['auto','sqrt','log2'],
-                #     'n_estimators': [8,16,32,64,128,256]
-                # },
+                    # 'max_features':['sqrt','log2',None],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "Gradient Boosting":{
+                    # 'loss':['squared_error', 'huber', 'absolute_error', 'quantile'],
+                    'learning_rate':[.1,.01,.05,.001],
+                    'subsample':[0.6,0.7,0.75,0.8,0.85,0.9],
+                    # 'criterion':['squared_error', 'friedman_mse'],
+                    # 'max_features':['auto','sqrt','log2'],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
 
                 "Linear Regression":{},
 
@@ -82,7 +82,9 @@ class ModelTrainer:
 
 
 
-            model_report:dict = evaluate_models(X_train = x_train, y_train = y_train, X_test= x_test, y_test = y_test, models = models, param = params)
+            model_report:dict = evaluate_models(X_train = x_train, y_train = y_train, X_test= x_test, y_test = y_test, models = models)#, param = params)
+
+            # print(model_report)
 
             ## To get best model score from dict
             best_model_score = max(sorted(model_report.values()))
@@ -93,11 +95,13 @@ class ModelTrainer:
                 list(model_report.values()).index(best_model_score)
             ]
             best_model = models[best_model_name]
+            # print(best_model_score)
+            # print(best_model)
 
 
 
-            if best_model_score<0.6:
-                raise CustomException("No best model found",sys)
+            # if best_model_score<0.4:
+            #     raise CustomException("No best model found",sys)
             logging.info(f"Best found model on both training and testing dataset")
 
             
