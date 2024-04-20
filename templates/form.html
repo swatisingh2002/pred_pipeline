@@ -1,36 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Exam Performance Indicator</title>
-<html>
+<html> <style>
+    body {
+      
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #333; /* Dark gray color */
+        color: #fff; /* Text color (white) */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Add your additional styles here */
+
+</style>
 <body>
-    <style>
-        body {
-          
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-color: #333; /* Dark gray color */
-            color: #fff; /* Text color (white) */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .container {
-            
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Add your additional styles here */
-
-    </style>
-</head>
-<body>
+<form action="{{url_for('predict_datapoint')}}" method="POST">
+    
     <div class="container">
         <h1 style="background-color: antiquewhite; color: black; ">
       
@@ -138,16 +131,7 @@
             <p style="background-color: antiquewhite; color: black; text-align: center;">THE  prediction is : {{results}}</p>
         </h2>
     </div>
-    <br>
-    <br>
-    <section class="u-backlink u-clearfix u-grey-80", style=" background-color: aliceblue; text-align: center;">
-        <br>
-        
-        
-        <a class="u-link" href="https://github.com/swatisingh2002/pred_pipeline" target="_blank">
-          <span>Check my github repo </span>
-        </a>. 
-      </section>
-    
+  <input type="submit" value="Submit">
+</form>
 </body>
 </html>
