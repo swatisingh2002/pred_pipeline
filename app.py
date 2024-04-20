@@ -24,9 +24,9 @@ def predict_datapoint():
             writing_score=float(request.form.get('reading_score'))
 
         )
-    new_data = data.get_data_as_dataframe()
-    predict_pipeline = PredictPipeline()
-    pred = predict_pipeline.predict(new_data)
+    new_data = data.get_data_as_data_frame()
+    prediction_pipeline = PredictPipeline()
+    pred = prediction_pipeline.predict(new_data)
 
     results = round(pred[0],2)
 
